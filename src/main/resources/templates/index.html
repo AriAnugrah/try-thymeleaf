@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Hospital Application</title>
+</head>
+<body>
+<div align="center">
+    <h1>Employeess Records</h1>
+    <a href="/new">Enter New Employeess</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Jabatan</th>
+                <th>Golongan</th>
+                <th>Gaji</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employeess : ${listEmployeess}">
+                <td th:text="${employeess.id}">ID</td>
+                <td th:text="${employeess.name}">Name</td>
+                <td th:text="${employeess.jabatan}">Jabatan</td>
+                <td th:text="${employeess.golongan}">Golongan</td>
+                <td th:text="${employeess.gaji}">Gaji</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${employeess.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${employeess.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
